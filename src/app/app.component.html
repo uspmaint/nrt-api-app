@@ -1,1 +1,45 @@
-<div>{{title}}</div>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item href="https://google.com" target="_blank">
+          <mat-icon mat-list-icon>1</mat-icon>
+          <span mat-line>Author</span>
+        </a>
+        <a mat-list-item href="https://google.com" target="_blank">
+          <mat-icon mat-list-icon>code</mat-icon>
+          <span mat-line>3</span>
+        </a>
+        <a mat-list-item href="https://google.com" target="_blank">
+          <mat-icon mat-list-icon>web</mat-icon>
+          <span mat-line>3</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <div>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+        <span>  NRT API Test  </span>
+      </mat-toolbar>
+  
+      <div class="app-content">
+        <router-outlet></router-outlet>
+        <div>
+            <div style="width:120px; margin:20px;">
+                    <button mat-raised-button color="primary" style="width:120px;" (click)="start()">Start</button>
+            </div>
+            <div style="width:120px;  margin:20px;">
+                    <button  mat-raised-button color="accent" style="width:120px;"  (click)="stop()">Stop</button>
+            </div>
+            <div style="width:120px;  margin:20px;">
+                    <button mat-raised-button color="warn" style="width:120px;" (click)="reset()">Reset</button>
+            </div>
+            
+            
+            
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
