@@ -1,45 +1,68 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav>
-      <mat-nav-list>
-        <a mat-list-item href="https://google.com" target="_blank">
-          <mat-icon mat-list-icon>1</mat-icon>
-          <span mat-line>Author</span>
-        </a>
-        <a mat-list-item href="https://google.com" target="_blank">
-          <mat-icon mat-list-icon>code</mat-icon>
-          <span mat-line>3</span>
-        </a>
-        <a mat-list-item href="https://google.com" target="_blank">
-          <mat-icon mat-list-icon>web</mat-icon>
-          <span mat-line>3</span>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-  
-    <div>
-      <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item href="https://google.com" target="_blank">
+        <mat-icon mat-list-icon>1</mat-icon>
+        <span mat-line>Author</span>
+      </a>
+      <a mat-list-item href="https://google.com" target="_blank">
+        <mat-icon mat-list-icon>code</mat-icon>
+        <span mat-line>3</span>
+      </a>
+      <a mat-list-item href="https://google.com" target="_blank">
+        <mat-icon mat-list-icon>web</mat-icon>
+        <span mat-line>3</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-        <span>  NRT API Test  </span>
-      </mat-toolbar>
-  
-      <div class="app-content">
-        <router-outlet></router-outlet>
-        <div>
-            <div style="width:120px; margin:20px;">
-                    <button mat-raised-button color="primary" style="width:120px;" (click)="start()">Start</button>
-            </div>
-            <div style="width:120px;  margin:20px;">
-                    <button  mat-raised-button color="accent" style="width:120px;"  (click)="stop()">Stop</button>
-            </div>
-            <div style="width:120px;  margin:20px;">
-                    <button mat-raised-button color="warn" style="width:120px;" (click)="reset()">Reset</button>
-            </div>
-            
-            
-            
+      <span> NRT API Test </span>
+    </mat-toolbar>
+
+    <div class="app-content">
+      <router-outlet></router-outlet>
+      <div>
+        <div style="width:120px; margin:20px;">
+            <mat-checkbox [(ngModel)]="simulate">Simulate</mat-checkbox>
         </div>
+        <div style="width:120px; margin:20px;">
+          <button mat-raised-button color="primary" style="width:120px;" (click)="start()">Start</button>
+        </div>
+        <div style="width:120px;  margin:20px;">
+          <button mat-raised-button color="accent" style="width:120px;" (click)="stop()">Stop</button>
+        </div>
+        <div style="width:120px;  margin:20px;">
+          <button mat-raised-button color="warn" style="width:120px;" (click)="reset()">Reset</button>
+        </div>
+
+        <div  class="position-relative " style="top:120px; left:265px;  width:200px; height:305px; margin:20px;">
+            <mat-card class="mode-card" style=" width:220px; height:110px; text-align: center;">
+                <mat-card-header 
+                [ngStyle]="{'background-color': bgcolor,'color': color}"
+               
+                    style=" height:30px;  width:190px; 
+                        font-size: 14px; border: 0px solid red ;padding: 5px; margin-bottom: 5px; margin-left:auto; margin-right:auto;">
+                    {{status}}
+                </mat-card-header>
+        
+        
+                <mat-card-actions>
+                    <div>
+                        
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        
+        </div>
+
+
+
       </div>
     </div>
-  </mat-sidenav-container>
+  </div>
+</mat-sidenav-container>

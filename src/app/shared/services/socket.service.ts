@@ -6,27 +6,44 @@ import { Event } from '../model/client-enums';
 
 import * as socketIo from 'socket.io-client';
 import { Outputs } from '../model/outputs';
+import { environment } from 'src/environments/environment';
+import { Inputs } from '../model/inputs';
 
-const SERVER_URL = 'http://10.100.1.130:4223';
+const SERVER_URL = 'http://192.168.11.10:4223';
 
 @Injectable()
 export class SocketService {
     private socket;
+    public url:string
+    
+    public setURL(url: string){
+        this.url = url;
+    }
+
+    constructor(){
+        this.socket = socketIo(environment.ws_url);
+    }
 
     public initSocket(): void {
       
-        this.socket = socketIo(SERVER_URL);
-        console.log(' socket init id %s' , this.socket.id);
+        
+       
     }
 
-    public send(message: Outputs, id: number): void {
+    public send(message: Inputs, simulate:boolean): void {
         console.log( 'send socket m: %s' , message);
-        this.socket.emit('outputs', message, id);
+        this.socket.emit('inputs', message,simulate);
     }
 
-    public onMessage(): Observable<Outputs> {
+    public onData(): Observable<Outputs> {
         return new Observable<Outputs>(observer => {
-            this.socket.on('outputs', (data: Outputs) => observer.next(data));
+            
+            this.socket.on('outputs', (data: Outputs) => {
+              
+                observer.next(data)
+              
+                
+            });
         });
     }
 

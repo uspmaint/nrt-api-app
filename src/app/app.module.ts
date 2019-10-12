@@ -4,10 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { MatIconModule , MatListModule, MatSidenavModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatIconModule ,
+  MatListModule, 
+  MatSidenavModule, 
+  MatToolbarModule, 
+  MatButtonModule ,
+  MatCheckboxModule,
+  MatCardModule
+  
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocketService } from './shared/services/socket.service';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,8 +31,10 @@ import { SocketService } from './shared/services/socket.service';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatButtonModule
-    
+    MatButtonModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatCardModule
     
     
   ],
